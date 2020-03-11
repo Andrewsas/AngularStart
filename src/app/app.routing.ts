@@ -12,10 +12,12 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
-  },
-  {
-    path: 'settings',
-    component: AdminLayoutComponent,
+    children: [
+      {
+        path: 'doctor',
+        loadChildren: './view/doctor/doctor.module#DoctorModule'
+      },
+    ]
   },
   {
     path: 'home',

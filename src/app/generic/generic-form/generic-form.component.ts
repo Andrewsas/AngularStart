@@ -3,9 +3,8 @@ import {  ActivatedRoute } from '@angular/router';
 
 import { BaseModel } from 'src/app/model/base-model';
 import { CrudService } from '../../service/crud/crud.service';
-import { AlertService } from '../../service/alert/alert.service';
 import { GenericService } from 'src/app/service/generic/GenericService';
-import { MessageType, IconType, AlertMsg, MessageText } from '../../constant/constant';
+import { MessageType, IconType, MessageText } from '../../constant/constant';
 
 declare var $: any;
 
@@ -20,7 +19,6 @@ export class GenericFormComponent<TModel extends BaseModel, TService extends Cru
     public activatedRoute: ActivatedRoute,
     public service: TService,
     public modelType: new () => TModel,
-    public alertServe: AlertService,
     public genericService: GenericService
   ) {}
 
@@ -84,27 +82,20 @@ export class GenericFormComponent<TModel extends BaseModel, TService extends Cru
         }
       );
     } else {
-      this.alertServe.showAlertConfirm(AlertMsg.CONFIRM.EDIT, result => {
-        setTimeout(() => load = this.genericService.openDialog(), 100);
-        if (result) {
-          this.service.update(this.obj).subscribe(
-            success => {
-              this.obj = success;
-              this.genericService.toats(MessageText.EDIT, MessageType.SUCCESS, IconType.UPDATE
-              );
-              setTimeout(() => load.close(), 300);
-              this.confirm = true;
-              this.afterSave();
-            },
-            error => {
-              setTimeout(() => load.close(), 300);
-              this.genericService.onError(error);
-            }
+      this.service.update(this.obj).subscribe(
+        success => {
+          this.obj = success;
+          this.genericService.toats(MessageText.EDIT, MessageType.SUCCESS, IconType.UPDATE
           );
-        } else {
           setTimeout(() => load.close(), 300);
+          this.confirm = true;
+          this.afterSave();
+        },
+        error => {
+          setTimeout(() => load.close(), 300);
+          this.genericService.onError(error);
         }
-      });
+      );
     }
   }
 

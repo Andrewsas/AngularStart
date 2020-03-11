@@ -27,7 +27,7 @@ export const MENUS: Menu[] = [
   },
   {
     icon: 'settings_applications',
-    title: 'Configurações',
-    router: '/settings'
+    title: 'Medico',
+    router: '/doctor'
   }
 ];

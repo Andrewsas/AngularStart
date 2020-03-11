@@ -1,14 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { MaterialModule } from 'src/app/material.module';
 import { DoctorRoutingModule } from './doctor-routing.module';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
+
+import { DoctorService } from 'src/app/service/doctor/doctor.service';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [DoctorListComponent],
   imports: [
+    FormsModule,
     CommonModule,
-    DoctorRoutingModule
-  ]
+    CommonModule,
+    MaterialModule,
+    DoctorRoutingModule,
+    ReactiveFormsModule,
+  ],
+  providers: [DoctorService]
 })
 export class DoctorModule { }

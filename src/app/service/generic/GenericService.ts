@@ -2,10 +2,9 @@ import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-import { AlertService } from '../alert/alert.service';
 import { ToastService } from '../toast/toast.service';
 import { SpinerComponent } from 'src/app/generic/spiner/spiner.component';
-import { AlertMsg, MessageType, IconType, MessageText } from './../../constant/constant';
+import { MessageType, IconType, MessageText } from './../../constant/constant';
 
 
 @Injectable()
@@ -13,7 +12,6 @@ export class GenericService {
   constructor(
     public router: Router,
     public dialog: MatDialog,
-    public alertServe: AlertService,
     public toastService: ToastService
   ) {}
 
@@ -36,11 +34,7 @@ export class GenericService {
     if (confirm) {
       this.router.navigate([this.getParentPath(this.getParentPath())]);
     } else if (edit) {
-      this.alertServe.showAlertConfirm(AlertMsg.CONFIRM.CANCEL, result => {
-        if (result) {
-          this.router.navigate([this.getParentPath(this.getParentPath())]);
-        }
-      });
+      this.router.navigate([this.getParentPath(this.getParentPath())]);
     }  else {
       this.router.navigate([this.getParentPath()]);
     }

@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { RH_URL } from './../../constant/constant';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LoginService {
   public headers = new Headers();
 

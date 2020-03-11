@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {
     HttpEvent,
@@ -9,26 +8,17 @@ import {
     HttpErrorResponse
 } from '@angular/common/http';
 
-import { tap, catchError } from 'rxjs/operators';
-import { AlertMsg, MessageText } from '../../constant/constant';
-
-import { AlertService } from './../alert/alert.service';
 import { Observable } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class InterceptService implements HttpInterceptor {
 
-    constructor(
-        private aletrService: AlertService,
-        private router: Router
-    ) { }
+    constructor() { }
 
     // intercept request and add token
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         request = request.clone({
-            setHeaders: {
-                'Authorization': sessionStorage.getItem('token') ? `INV=${sessionStorage.getItem('token')}` : '',
-            }
         });
 
         return next.handle(request)
@@ -63,19 +53,12 @@ export class InterceptService implements HttpInterceptor {
     }
 
     private semInternet() {
-        this.aletrService.showAlertSuccess(AlertMsg.CANCEL, 'Ops !', MessageText.NOTNET);
     }
 
     private semAutorizacao() {
-        this.aletrService.showAlertCall(AlertMsg.WARNING, MessageText.ATTENTION, MessageText.AUTHORIZATION, (result) => {
-            sessionStorage.removeItem('token');
-            localStorage.removeItem('user');
-            localStorage.removeItem('authority');
-            this.router.navigate(['login']);
-        });
+
     }
 
     private servidorIndisponivel() {
-        this.aletrService.showAlertSuccess(AlertMsg.CANCEL, 'Ops !', MessageText.NOTSERVE);
     }
 }

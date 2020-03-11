@@ -1,0 +1,50 @@
+<mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> user.name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item?.name }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> user.email
+      </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item?.email }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="creator">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> date.create
+      </mat-header-cell>
+      <mat-cell *matCellDef="let item"> {{ item?.created_at | date: 'dd/MM/yyyy' }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <mat-header-cell class="text-right" *matHeaderCellDef> table.action
+      </mat-header-cell>
+      <mat-cell class="text-right" *matCellDef="let item">
+        <button mat-icon-button class="cursor text-secondary" (click)="copy(item)" *ngIf="!disabled" >
+          <mat-icon class="icon-acoes" matTooltip="register.copyfile_copy">
+          </mat-icon>
+        </button>
+        <button mat-icon-button class="cursor text-primary" (click)="openDialog(item.uuid)" *ngIf="!disabled">
+          <mat-icon class="icon-acoes" matTooltip="register.view">
+            visibility</mat-icon>
+        </button>
+        <button mat-icon-button class="cursor text-warning" (click)="edit(item)" *ngIf="!disabled" >
+          <mat-icon class="icon-acoes" matTooltip="register.editmode_edit">
+          </mat-icon>
+        </button>
+        <button mat-icon-button class="cursor text-danger" (click)="delete(item)" *ngIf="!disabled" >
+          <mat-icon class="icon-acoes" matTooltip="register.disabledelete">
+          </mat-icon>
+        </button>
+        <button mat-icon-button class="cursor text-info" (click)="restory(item)" *ngIf="disabled">
+          <mat-icon class="icon-acoes" matTooltip="register.activerestore">
+          </mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let item; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>

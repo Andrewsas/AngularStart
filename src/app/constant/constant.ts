@@ -9,7 +9,8 @@ export const Constant = {
   FILE: 'file',
   RECOVERY: 'recovery',
   RESET: 'reset',
-  DASHBOARD: 'dashboard'
+  DASHBOARD: 'dashboard',
+  DOCTOR: 'doctor'
 };
 
 export const MessageType = {
@@ -44,50 +45,6 @@ export const IconType = {
   NOTIFICATION: 'notifications',
   ERROR: 'cancel',
   DELETE: 'delete'
-};
-
-export const AlertMsg = {
-  CONFIRM: {
-    SAVE: {
-      titleRequest: 'alert.confirm.save.titleRequest',
-      text: 'alert.confirm.save.text',
-      buttonConfirm: 'alert.confirm.save.buttonConfirm',
-      buttonCancel: 'alert.confirm.save.buttonCancel'
-    },
-    EDIT: {
-      titleRequest: 'alert.confirm.edit.titleRequest',
-      text: 'alert.confirm.edit.text',
-      buttonConfirm: 'alert.confirm.edit.buttonConfirm',
-      buttonCancel: 'alert.confirm.edit.buttonCancel'
-    },
-    DELETE: {
-      titleRequest: 'alert.confirm.delete.titleRequest',
-      text: 'alert.confirm.delete.text',
-      buttonConfirm: 'alert.confirm.delete.buttonConfirm',
-      buttonCancel: 'alert.confirm.delete.buttonCancel'
-    },
-    CANCEL: {
-      titleRequest: 'alert.confirm.cancel.titleRequest',
-      text: 'alert.confirm.cancel.text',
-      buttonConfirm: 'alert.confirm.cancel.buttonConfirm',
-      buttonCancel: 'alert.confirm.cancel.buttonCancel'
-    }
-  },
-  SUCCESS: {
-    titleRequest: 'alert.success.titleRequest',
-    text: 'alert.success.text',
-    type: 'success'
-  },
-  CANCEL: {
-    titleRequest: 'alert.cancel.titleRequest',
-    text: 'alert.cancel.text',
-    type: 'error'
-  },
-  WARNING: {
-    titleRequest: 'Atenção !',
-    text: 'alert.warning.text',
-    type: 'warning'
-  }
 };
 
 export const CUSTOM_DATE_FORMAT = {

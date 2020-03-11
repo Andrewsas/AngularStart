@@ -40,7 +40,6 @@ import {
   FormsModule,
   ReactiveFormsModule
 } from '../../node_modules/@angular/forms';
-import { TranslatePipeModule } from './generic/translate/translate-pipe.module';
 
 @NgModule({
   imports: [
@@ -78,11 +77,9 @@ import { TranslatePipeModule } from './generic/translate/translate-pipe.module';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    TranslatePipeModule,
     FormsModule,
     ReactiveFormsModule,
     MatDividerModule,
-    TranslatePipeModule
   ]
 })
 export class MaterialModule {}

@@ -20,6 +20,8 @@ import { InterceptService } from './service/interceptor/intercept-serve';
 import { AuthGuardService } from 'src/app/security/auth-guard/authguard.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { GenericService } from './service/generic/GenericService';
+import { ToastService } from './service/toast/toast.service';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -45,6 +47,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   ],
   providers: [
     AuthService,
+    ToastService,
+    GenericService,
     AuthGuardService,
     {
       provide: HTTP_INTERCEPTORS,
