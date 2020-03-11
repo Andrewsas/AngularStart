@@ -1,0 +1,37 @@
+.img-profile {
+  width: 40px;
+  height: 40px;
+}
+
+.bordes-divider {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.mat-list-item-content {
+  padding: 0px !important;
+}
+
+.menu-button {
+  transition: 300ms ease-in-out;
+  margin: 0 0 0 auto;
+  transform: rotate(0deg);
+}
+
+.menu-button.rotated {
+  transform: rotate(180deg);
+}
+
+.submenu {
+  overflow-y: hidden;
+  transform: scaleY(0);
+  height: 0px;
+  transform-origin: top;
+  transition: transform 300ms ease;
+}
+
+.submenu.expanded {
+  transform: scaleY(1);
+  height: auto;
+  transition: transform 300ms ease;
+}

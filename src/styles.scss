@@ -1,0 +1,99 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bg-gray {
+  background-color: #eee;
+}
+
+.bg-none {
+  background: none;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.w-80 {
+  width: 80% !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.vh-100 {
+  height: 100vh !important;
+}
+
+.click {
+  cursor: pointer;
+}
+
+.z-index {
+  z-index: 999;
+}
+
+
+.sidenav-content-normal {
+  margin-left: 261px !important;
+  transition: 300ms;
+}
+
+.sidenav-content-mini {
+  margin-left: 81px !important;
+  transition: 300ms;
+}
+
+.sidenav-content {
+  margin-left: 0px !important;
+}
+
+.menu-sider-bar-normal {
+  width: 260px;
+  transition: 300ms;
+}
+
+.menu-sider-bar-mini {
+  width: 80px;
+  transition: 300ms;
+}
+
+.text-normal {
+  width: 260px;
+  transition: 400ms;
+}
+
+.text-mini {
+  width: 0px;
+  transition: 300ms;
+}
+
+.sidebar {
+  height: calc(100% - 80px);
+}
+
+button:focus {
+  outline: 0 !important;
+}
+
+button:active {
+  outline: 0 !important;
+}
+
+// .active-link {
+//   background-color: #333;
+//   color: white !important;
+// }
+
+.mat-drawer-inner-container {
+  overflow-x: hidden !important;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

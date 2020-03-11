@@ -1,0 +1,14 @@
+<mat-toolbar class="bg-none">
+  <button mat-mini-fab (click)="minimizeSidebar()" *ngIf="showSiderBar; else menuSanduba">
+    <mat-icon *ngIf="!minimize; else mini">menu_open</mat-icon>
+    <ng-template #mini>
+      <mat-icon>view_compact</mat-icon>
+    </ng-template>
+  </button>
+  <ng-template #menuSanduba>
+    <button mat-mini-fab class="z-index" (click)="exibeSiderbar()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </ng-template>
+  <span class="ml-4">{{ title }}</span>
+</mat-toolbar>

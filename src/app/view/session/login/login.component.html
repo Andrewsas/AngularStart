@@ -1,0 +1,53 @@
+<div class="container-fluid h-100">
+  <div class="row h-100 align-items-center justify-content-center">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <mat-card>
+        <form (submit)="login()">
+          <div fxLayout="row">
+
+            <mat-form-field class="col mt-2">
+              <mat-label>Email</mat-label>
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <input matInput type="email" required #username="ngModel" name="usuario" [(ngModel)]="obj.email">
+              <mat-error *ngIf="username.invalid && (username.dirty || username.touched)">
+                <mat-error *ngIf="username.hasError('required'); else invalidEmail">
+                  E-mail é
+                  <strong> obrigatório.</strong>
+                </mat-error>
+                <ng-template #invalidEmail>
+                  <mat-error>
+                    Email inválido
+                  </mat-error>
+                </ng-template>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col mt-2">
+              <mat-label>Senha</mat-label>
+              <mat-icon matSuffix class="click z-index" (click)="hide = !hide" >{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+              <input matInput type="{{ hide ? 'password' : 'text' }}" required #pass="ngModel" name="senha" minlength="3"
+                [(ngModel)]="obj.password">
+              <mat-error *ngIf="pass.invalid && (pass.dirty || pass.touched)">
+                <mat-error *ngIf="pass.hasError('required')">
+                  Senha é
+                  <strong> obrigatório.</strong>
+                </mat-error>
+                <mat-error *ngIf="pass.hasError('minlength')">
+                  Senha deve conter no minímo 4 caracteres.
+                </mat-error>
+              </mat-error>
+            </mat-form-field>
+
+            <div class="col text-center mt-3">
+                <button mat-flat-button color="primary">Entrar</button>
+            </div>
+
+            <div class="col text-center mt-3">
+              <button mat-button color="accent">Esqueci a asenha</button>
+            </div>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

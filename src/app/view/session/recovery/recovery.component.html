@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row justify-content-center sizerHeigth">
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4 alignCenter">
+      <div class="card mt-3">
+        <div class="card-header card-header-primary card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">vpn_key</i>
+          </div>
+        </div>
+        <div class="card-body p-3">
+          <div class="col-12">
+            <form [formGroup]="recoveryForm" (submit)="updateSenha()">
+              <div class="row">
+                <div class="input-group">
+                  <span class="input-group-text col-2">
+                    <i class="material-icons">lock</i>
+                  </span>
+                  <mat-form-field class="col-10">
+                    <mat-label>{{ 'login.password' | translate }}</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' :
+                      'visibility_off'}}</mat-icon>
+                    <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+                      <mat-error *ngIf="password.hasError('required')">
+                        {{ 'msg.login.password' | translate}}
+                        <strong>{{ 'required' | translate }}.</strong>
+                      </mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="input-group mt-3">
+                  <span class="input-group-text col-2">
+                    <i class="material-icons">lock</i>
+                  </span>
+                  <mat-form-field class="col-10">
+                    <mat-label>{{ 'employee.form.passwordconfirm' | translate }}</mat-label>
+                    <input matInput type="password" formControlName="confirmPassword" (keyup)="veridicarPassword()">
+                    <mat-error *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                      <mat-error *ngIf="confirmPassword.hasError('required')">
+                        {{ 'msg.login.password' | translate}}
+                        <strong>{{ 'required' | translate }}.</strong>
+                      </mat-error>
+                      <mat-error *ngIf="(confirmPassword.value != password.value)">
+                        {{ 'msg.password.error' | translate }}
+                      </mat-error>
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 text-center">
+                  <input type="submit" class="btn btn-primary mt-4" [disabled]="!recoveryForm.valid" value="{{ 'button.update' | translate }}" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

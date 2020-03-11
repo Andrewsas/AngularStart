@@ -1,0 +1,13 @@
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$angular-start-primary: mat-palette($mat-indigo, 50);
+$angular-start-secondary: mat-palette($mat-pink, 900, 500);
+$angular-start-warn: mat-palette($mat-red);
+
+$angular-start-theme: mat-light-theme($angular-start-primary, $angular-start-secondary, $angular-start-warn);
+$angular-dark-theme: mat-dark-theme($angular-start-primary, $angular-start-secondary, $angular-start-warn);
+
+@include angular-material-theme($angular-start-theme);
+

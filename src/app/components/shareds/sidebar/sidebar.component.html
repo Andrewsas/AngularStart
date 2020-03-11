@@ -1,0 +1,54 @@
+<div class="w-100 vh-100 p-2" (mouseenter) ="prev(true)"  (mouseleave) ="prev(false)">
+  <div class="sidebar">
+  <div class="row mt-3">
+    <div class="col-12 text-center">
+      <img src="./assets/logo_marca.svg" class="w-80" alt="Logo Marca" *ngIf="!miniSiderBar || hover; else miniBar">
+      <ng-template #miniBar>
+        <img src="./assets/logo_tipo.svg" class="w-80" alt="Logo Tipo">
+      </ng-template>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-12 text-left">
+      <div class="m-2 p-2 border-top border-bottom">
+        <img src="./assets/avatar.png" alt="Foto de Perfil" class="rounded-circle img-profile">
+        <span class="ml-3 truncate" *ngIf="!miniSiderBar || hover">Andrew da Silva</span>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12 ">
+      <mat-nav-list color="primary">
+        <div *ngFor="let menu of menus">
+          <div *ngIf="menu.children && menu.children.length; else menuSimples">
+            <a mat-list-item (click)="menu.expanse = !menu.expanse">
+              <mat-icon mat-list-icon *ngIf="menu.icon; else semIcon">{{ menu.icon }}</mat-icon>
+              <span class="ml-2" *ngIf="!miniSiderBar || hover">{{ menu.title }}</span>
+              <mat-icon  class="menu-button float-right" [ngClass]="{'rotated' : menu.expanse}" *ngIf="!miniSiderBar || hover">expand_more</mat-icon>
+            </a>
+            <div class="submenu" [ngClass]="{'expanded' : menu.expanse}">
+              <a mat-list-item routerLink="{{ menu.router + '/' + sub.router }}" routerLinkActive="active-link" *ngFor="let sub of menu.children">
+                <mat-icon mat-list-icon *ngIf="sub.icon; else semIcon">{{ sub.icon }}</mat-icon>
+                <span class="ml-2" *ngIf="!miniSiderBar || hover">{{ sub.title }}</span>
+                <span class="ml-2" *ngIf="miniSiderBar && !hover">{{ sub.title.substring(0,2) | uppercase }}</span>
+              </a>
+            </div>
+          </div>
+          <ng-template #menuSimples>
+            <a mat-list-item routerLink="{{menu.router}}" routerLinkActive="active-link">
+              <mat-icon mat-list-icon *ngIf="menu.icon; else semIcon">{{ menu.icon }}</mat-icon>
+              <span class="ml-2" *ngIf="!miniSiderBar || hover">{{ menu.title }}</span>
+            </a>
+          </ng-template>
+        </div>
+      </mat-nav-list>
+    </div>
+  </div>
+</div>
+  <mat-nav-list class="border-top">
+    <a mat-list-item>
+      <mat-icon mat-list-icon>directions_run</mat-icon>
+      <span class="ml-2" *ngIf="!miniSiderBar || hover">Sair</span>
+    </a>
+  </mat-nav-list>
+</div>

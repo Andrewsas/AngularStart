@@ -1,0 +1,13 @@
+<div class="container-fluid h-100 p-0">
+  <mat-drawer-container class="w-100 h-100" autosize>
+    <mat-drawer #drawer class="h-100" mode="{{ showSiderBar ? 'side' : 'push'}}" [opened]="showSiderBar || openSiderBar">
+      <div [ngClass]="{'menu-sider-bar-mini': (miniSiderBar && !hover), 'menu-sider-bar-normal': (!miniSiderBar || hover)}">
+        <app-sidebar class="h-100" [miniSiderBar]="miniSiderBar" (maxminiza)="hover = $event"></app-sidebar>
+      </div>
+    </mat-drawer>
+    <mat-drawer-content class="h-100" [ngClass]="{'sidenav-content-normal': !miniSiderBar, 'sidenav-content-mini': miniSiderBar, 'sidenav-content': !showSiderBar}">
+      <app-toolbar [mini]="miniSiderBar" (miniSiderBar)="miniSiderBar = $event" (toogle)="drawer.toggle()" [showSiderBar]="showSiderBar"></app-toolbar>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
