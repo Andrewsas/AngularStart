@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { ToastService } from '../toast/toast.service';
 import { SpinerComponent } from 'src/app/generic/spiner/spiner.component';

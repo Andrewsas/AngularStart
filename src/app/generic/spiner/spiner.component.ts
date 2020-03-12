@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-spiner',
-  template: '<mat-spinner class="spiner"></mat-spinner>',
+  template: '<mat-progress-spinner class="spiner"></mat-progress-spinner>',
   styles: [`.spiner{
                 position: absolute;
                 top: calc(50vh - 60px);

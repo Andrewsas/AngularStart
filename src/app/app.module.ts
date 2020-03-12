@@ -22,6 +22,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { GenericService } from './service/generic/GenericService';
 import { ToastService } from './service/toast/toast.service';
+import { SpinerComponent } from './generic/spiner/spiner.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -41,10 +42,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     AppComponent,
     SidebarComponent,
+    SpinerComponent,
     ToolbarComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
   ],
+  entryComponents: [SpinerComponent],
   providers: [
     AuthService,
     ToastService,

@@ -22,13 +22,13 @@
         <div *ngFor="let menu of menus">
           <div *ngIf="menu.children && menu.children.length; else menuSimples">
             <a mat-list-item (click)="menu.expanse = !menu.expanse">
-              <mat-icon mat-list-icon *ngIf="menu.icon; else semIcon">{{ menu.icon }}</mat-icon>
+              <mat-icon mat-list-icon *ngIf="menu.icon">{{ menu.icon }}</mat-icon>
               <span class="ml-2" *ngIf="!miniSiderBar || hover">{{ menu.title }}</span>
               <mat-icon  class="menu-button float-right" [ngClass]="{'rotated' : menu.expanse}" *ngIf="!miniSiderBar || hover">expand_more</mat-icon>
             </a>
             <div class="submenu" [ngClass]="{'expanded' : menu.expanse}">
               <a mat-list-item routerLink="{{ menu.router + '/' + sub.router }}" routerLinkActive="active-link" *ngFor="let sub of menu.children">
-                <mat-icon mat-list-icon *ngIf="sub.icon; else semIcon">{{ sub.icon }}</mat-icon>
+                <mat-icon mat-list-icon *ngIf="sub.icon">{{ sub.icon }}</mat-icon>
                 <span class="ml-2" *ngIf="!miniSiderBar || hover">{{ sub.title }}</span>
                 <span class="ml-2" *ngIf="miniSiderBar && !hover">{{ sub.title.substring(0,2) | uppercase }}</span>
               </a>
@@ -36,7 +36,7 @@
           </div>
           <ng-template #menuSimples>
             <a mat-list-item routerLink="{{menu.router}}" routerLinkActive="active-link">
-              <mat-icon mat-list-icon *ngIf="menu.icon; else semIcon">{{ menu.icon }}</mat-icon>
+              <mat-icon mat-list-icon *ngIf="menu.icon">{{ menu.icon }}</mat-icon>
               <span class="ml-2" *ngIf="!miniSiderBar || hover">{{ menu.title }}</span>
             </a>
           </ng-template>
