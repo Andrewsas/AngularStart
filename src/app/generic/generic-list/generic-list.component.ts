@@ -1,12 +1,14 @@
 import { Router } from '@angular/router';
 import { OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { MessageType, IconType, MessageText } from '../../constant/constant';
 
 import { CrudService } from 'src/app/service/crud/crud.service';
 import { GenericService } from 'src/app/service/generic/GenericService';
 import { AuthGuardService } from 'src/app/security/auth-guard/authguard.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 export abstract class GenericListComponent<TModel extends any, TService extends CrudService<TModel>> implements OnInit, AfterViewInit {
 
@@ -47,12 +49,6 @@ export abstract class GenericListComponent<TModel extends any, TService extends 
     protected initOn = () => {
         this.dataSource = new MatTableDataSource(this.list);
         this.refreshData();
-        if (localStorage.getItem('lang') === 'pt') {
-            this.paginator._intl.itemsPerPageLabel = 'Itens por pagina:';
-            this.paginator._intl.getRangeLabel = (page: number, pageSize: number, length: number) => {
-                return ((page * pageSize) + 1) + ' - ' + ((page * pageSize) + pageSize) + ' de ' + length;
-            };
-        }
     }
 
     getFilteredRows(): Array<TModel> {

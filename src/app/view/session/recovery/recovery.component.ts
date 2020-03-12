@@ -1,5 +1,5 @@
-import { MatDialog } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 

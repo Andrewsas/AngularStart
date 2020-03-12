@@ -1,12 +1,13 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
-import { GenericService } from 'src/app/service/generic/GenericService';
-import { GenericListComponent } from 'src/app/generic/generic-list/generic-list.component';
-import { DoctorService } from 'src/app/service/doctor/doctor.service';
 import { Doctor } from 'src/app/model/doctor.model';
+import { GenericListComponent } from 'src/app/generic/generic-list/generic-list.component';
+
 import { ExcelService } from 'src/app/service/excel/excel.service';
+import { DoctorService } from 'src/app/service/doctor/doctor.service';
+import { GenericService } from 'src/app/service/generic/GenericService';
 
 @Component({
   selector: 'app-doctor-list',
@@ -23,6 +24,10 @@ export class DoctorListComponent extends GenericListComponent<Doctor, DoctorServ
     public genericService: GenericService
   ) {
     super(service, router, genericService);
+  }
+
+  public openDialog(uuid: string) {
+
   }
 
   public export() {

@@ -23,6 +23,7 @@ import { environment } from '../environments/environment';
 import { GenericService } from './service/generic/GenericService';
 import { ToastService } from './service/toast/toast.service';
 import { SpinerComponent } from './generic/spiner/spiner.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -32,9 +33,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
     MaterialModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
     PerfectScrollbarModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })

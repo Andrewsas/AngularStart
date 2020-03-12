@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       {
         path: 'doctor',
-        loadChildren: './view/doctor/doctor.module#DoctorModule'
+        loadChildren: () => import('./view/doctor/doctor.module').then(m => m.DoctorModule)
       },
     ]
   },
@@ -42,7 +42,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: './view/session/session.module#SessionModule'
+        loadChildren: () => import('./view/session/session.module').then(m => m.SessionModule)
       }
     ]
   },

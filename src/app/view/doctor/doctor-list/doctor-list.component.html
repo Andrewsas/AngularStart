@@ -1,50 +1,97 @@
-<mat-table #table [dataSource]="dataSource" matSort>
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> user.name
-      </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{ item?.name }} </mat-cell>
-    </ng-container>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row h-100 justify-content-center">
+      <div class="col-12 col-md-11 col-lg-10">
+        <mat-progress-bar mode="indeterminate" *ngIf="refresh"></mat-progress-bar>
+        <mat-card class="p-3">
+          <div class="row m-2">
+            <h4 class="card-title col-8 m-0 p-0">Médico</h4>
+            <p class="text-right col-4 m-0 p-0" style="color:black" *ngIf="refresh">Atualizando...</p>
+          </div>
 
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> user.email
-      </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{ item?.email }} </mat-cell>
-    </ng-container>
+          <div class="row">
+            <div class="col-5">
+              <mat-form-field class="pull-left">
+                <mat-label>Pesquisar</mat-label>
+                <input type="search" matInput (keyup)="applyFilter($event.target.value)">
+                <mat-icon matSuffix>search</mat-icon>
+              </mat-form-field>
+            </div>
 
-    <ng-container matColumnDef="creator">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> date.create
-      </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{ item?.created_at | date: 'dd/MM/yyyy' }} </mat-cell>
-    </ng-container>
+            <div class="col-7 text-right">
+              <div class="pull-right">
+                <button mat-raised-button color="accent" (click)="newRecord()">
+                  <i class="material-icons">add</i>
+                  Medico
+                </button>
+                <button mat-icon-button [matMenuTriggerFor]="menu" >
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="export()">
+                    <mat-icon>assignment_returned</mat-icon>
+                    <span>Exportar</span>
+                  </button>
+                  <button mat-menu-item>
+                    <span>Registros Ativos</span>
+                  </button>
+                  <button mat-menu-item>
+                    <span>Registros Inativos</span>
+                  </button>
+                </mat-menu>
+              </div>
+            </div>
+          </div>
 
-    <ng-container matColumnDef="action">
-      <mat-header-cell class="text-right" *matHeaderCellDef> table.action
-      </mat-header-cell>
-      <mat-cell class="text-right" *matCellDef="let item">
-        <button mat-icon-button class="cursor text-secondary" (click)="copy(item)" *ngIf="!disabled" >
-          <mat-icon class="icon-acoes" matTooltip="register.copyfile_copy">
-          </mat-icon>
-        </button>
-        <button mat-icon-button class="cursor text-primary" (click)="openDialog(item.uuid)" *ngIf="!disabled">
-          <mat-icon class="icon-acoes" matTooltip="register.view">
-            visibility</mat-icon>
-        </button>
-        <button mat-icon-button class="cursor text-warning" (click)="edit(item)" *ngIf="!disabled" >
-          <mat-icon class="icon-acoes" matTooltip="register.editmode_edit">
-          </mat-icon>
-        </button>
-        <button mat-icon-button class="cursor text-danger" (click)="delete(item)" *ngIf="!disabled" >
-          <mat-icon class="icon-acoes" matTooltip="register.disabledelete">
-          </mat-icon>
-        </button>
-        <button mat-icon-button class="cursor text-info" (click)="restory(item)" *ngIf="disabled">
-          <mat-icon class="icon-acoes" matTooltip="register.activerestore">
-          </mat-icon>
-        </button>
-      </mat-cell>
-    </ng-container>
+          <table class="w-100" mat-table #table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome</th>
+              <td mat-cell *matCellDef="let item"> {{ item?.name }} </td>
+            </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let item; columns: displayedColumns;">
-    </mat-row>
-  </mat-table>
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Email</th>
+              <td mat-cell *matCellDef="let item"> {{ item?.email }} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="created">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Data de Criação</th>
+              <td mat-cell *matCellDef="let item"> {{ item?.created_at | date: 'dd/MM/yyyy' }} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+              <th mat-header-cell class="text-right" *matHeaderCellDef> Ações </th>
+              <td mat-cell class="text-right" *matCellDef="let item">
+                <button mat-icon-button class="cursor text-secondary" (click)="copy(item)" >
+                  <mat-icon class="icon-acoes" matTooltip="register.copyfile_copy">
+                  </mat-icon>
+                </button>
+                <button mat-icon-button class="cursor text-primary" (click)="openDialog(item.uuid)">
+                  <mat-icon class="icon-acoes" matTooltip="register.view">
+                    visibility</mat-icon>
+                </button>
+                <button mat-icon-button class="cursor text-warning" (click)="edit(item)" >
+                  <mat-icon class="icon-acoes" matTooltip="register.editmode_edit">
+                  </mat-icon>
+                </button>
+                <button mat-icon-button class="cursor text-danger" (click)="delete(item)" >
+                  <mat-icon class="icon-acoes" matTooltip="register.disabledelete">
+                  </mat-icon>
+                </button>
+                <button mat-icon-button class="cursor text-info" (click)="delete(item)">
+                  <mat-icon class="icon-acoes" matTooltip="register.activerestore">
+                  </mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let item; columns: displayedColumns;"></tr>
+          </table>
+
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

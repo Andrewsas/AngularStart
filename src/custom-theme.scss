@@ -9,5 +9,5 @@ $angular-start-warn: mat-palette($mat-red);
 $angular-start-theme: mat-light-theme($angular-start-primary, $angular-start-secondary, $angular-start-warn);
 $angular-dark-theme: mat-dark-theme($angular-start-primary, $angular-start-secondary, $angular-start-warn);
 
-@include angular-material-theme($angular-start-theme);
+@include angular-material-theme($angular-dark-theme);
 

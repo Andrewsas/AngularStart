@@ -12,12 +12,11 @@ import { DoctorService } from 'src/app/service/doctor/doctor.service';
 @NgModule({
   declarations: [DoctorListComponent],
   imports: [
-    FormsModule,
-    CommonModule,
     CommonModule,
     MaterialModule,
-    DoctorRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
+    DoctorRoutingModule,
   ],
   providers: [DoctorService]
 })

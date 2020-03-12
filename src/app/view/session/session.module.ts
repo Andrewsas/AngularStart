@@ -1,25 +1,24 @@
 import { ToastService } from './../../service/toast/toast.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../../material.module';
 import { SessionRoutingModule } from './session-routing.module';
 
+import { LoginComponent } from './login/login.component';
 import { RecoveryComponent } from './recovery/recovery.component';
+
 import { StorageService } from 'src/app/service/storage/storage.service';
 import { RecoveryService } from 'src/app/service/recovery/recovery.service';
-import { LoginComponent } from './login/login.component';
+import { LoginService } from 'src/app/service/login/login.service';
 
 @NgModule({
   imports: [
     CommonModule,
     SessionRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     MaterialModule,
   ],
   declarations: [LoginComponent, RecoveryComponent],
-  providers: [RecoveryService, StorageService, ToastService]
+  providers: [RecoveryService, StorageService, ToastService, LoginService ]
 })
 export class SessionModule {}

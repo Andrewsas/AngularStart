@@ -16,14 +16,14 @@
                     <i class="material-icons">lock</i>
                   </span>
                   <mat-form-field class="col-10">
-                    <mat-label>{{ 'login.password' | translate }}</mat-label>
+                    <mat-label>{{ 'login.password' }}</mat-label>
                     <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
                     <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' :
                       'visibility_off'}}</mat-icon>
                     <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
                       <mat-error *ngIf="password.hasError('required')">
-                        {{ 'msg.login.password' | translate}}
-                        <strong>{{ 'required' | translate }}.</strong>
+                        {{ 'msg.login.password'}}
+                        <strong>{{ 'required' }}.</strong>
                       </mat-error>
                     </mat-error>
                   </mat-form-field>
@@ -33,21 +33,21 @@
                     <i class="material-icons">lock</i>
                   </span>
                   <mat-form-field class="col-10">
-                    <mat-label>{{ 'employee.form.passwordconfirm' | translate }}</mat-label>
+                    <mat-label>{{ 'employee.form.passwordconfirm' }}</mat-label>
                     <input matInput type="password" formControlName="confirmPassword" (keyup)="veridicarPassword()">
                     <mat-error *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
                       <mat-error *ngIf="confirmPassword.hasError('required')">
-                        {{ 'msg.login.password' | translate}}
-                        <strong>{{ 'required' | translate }}.</strong>
+                        {{ 'msg.login.password'}}
+                        <strong>{{ 'required' }}.</strong>
                       </mat-error>
                       <mat-error *ngIf="(confirmPassword.value != password.value)">
-                        {{ 'msg.password.error' | translate }}
+                        {{ 'msg.password.error' }}
                       </mat-error>
                     </mat-error>
                   </mat-form-field>
                 </div>
                 <div class="col-12 text-center">
-                  <input type="submit" class="btn btn-primary mt-4" [disabled]="!recoveryForm.valid" value="{{ 'button.update' | translate }}" />
+                  <input type="submit" class="btn btn-primary mt-4" [disabled]="!recoveryForm.valid" value="{{ 'button.update' }}" />
                 </div>
               </div>
             </form>
