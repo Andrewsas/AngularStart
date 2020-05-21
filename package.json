@@ -1,6 +1,6 @@
 {
-  "name": "consulta-eldorado-front",
-  "version": "0.0.0",
+  "name": "angular-start",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,7 +26,7 @@
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2",
     "ngx-bootstrap": "^5.2.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.3.1",
     "ngx-mask": "^8.1.5",
     "ngx-perfect-scrollbar": "^8.0.0",
     "xlsx": "^0.15.1"
